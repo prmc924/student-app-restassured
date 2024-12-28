@@ -1,5 +1,6 @@
 package com.studentapp.studentinfo;
 
+import com.studentapp.constant.EndPoints;
 import com.studentapp.model.StudentPojo;
 import com.studentapp.testbase.TestBase;
 import com.studentapp.utils.TestUtils;
@@ -33,10 +34,10 @@ public class StudentPutTest extends TestBase {
 
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
-                .pathParam("id", 1)
+                .pathParam("studentId", 1)
                 .when()
                 .body(studentPojo)
-                .put("/{id}");
+                .put(EndPoints.UPDATE_STUDENT_BY_ID);
         response.prettyPrint();
         response.then().statusCode(200);
 

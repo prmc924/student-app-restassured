@@ -1,7 +1,10 @@
 package com.studentapp.loggingrequestresponse;
 
+import com.studentapp.constant.EndPoints;
 import com.studentapp.testbase.TestBase;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
 
 /**
  * Created by Jay
@@ -13,6 +16,10 @@ public class LoggingRequestDetails extends TestBase {
     @Test
     public void test001() {
         System.out.println("---------------Printing Request Headers------------------");
+        given().log().ifValidationFails()
+                .when()
+                .get(EndPoints.GET_ALL_STUDENTS)
+                .then().log().ifValidationFails().statusCode(200);
     }
 
     /**

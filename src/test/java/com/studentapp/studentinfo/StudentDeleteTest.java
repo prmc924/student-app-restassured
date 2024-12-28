@@ -1,5 +1,6 @@
 package com.studentapp.studentinfo;
 
+import com.studentapp.constant.EndPoints;
 import com.studentapp.testbase.TestBase;
 import org.testng.annotations.Test;
 
@@ -13,9 +14,9 @@ public class StudentDeleteTest extends TestBase {
     @Test
     public void deleteTheStudent(){
         given().log().all()
-                .pathParam("id", 1)
+                .pathParam("studentId", 1)
                 .when()
-                .delete("/{id}")
+                .delete(EndPoints.DELETE_STUDENT_BY_ID)
                 .then().log().all()
                 .statusCode(204);
     }

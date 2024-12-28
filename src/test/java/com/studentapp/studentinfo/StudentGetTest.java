@@ -1,5 +1,6 @@
 package com.studentapp.studentinfo;
 
+import com.studentapp.constant.EndPoints;
 import com.studentapp.testbase.TestBase;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -18,7 +19,7 @@ public class StudentGetTest extends TestBase {
     public void getAllStudentsInfo() {
         Response response = given()
                 .when()
-                .get("/list");
+                .get(EndPoints.GET_ALL_STUDENTS);
         response.prettyPrint();
         response.then().statusCode(200);
     }
@@ -26,9 +27,9 @@ public class StudentGetTest extends TestBase {
     @Test
     public void getSingleStudentInfo() {
         Response response = given()
-                .pathParam("id", 1)
+                .pathParam("studentId", 1)
                 .when()
-                .get("/{id}");
+                .get(EndPoints.GET_SINGLE_STUDENT_BY_ID);
         response.prettyPrint();
         response.then().statusCode(200);
     }
@@ -44,7 +45,7 @@ public class StudentGetTest extends TestBase {
                 .param("limit", 3)*/
                 .params(qParams)
                 .when()
-                .get("/list");
+                .get(EndPoints.GET_ALL_STUDENTS);
         response.prettyPrint();
         response.then().statusCode(200);
     }
